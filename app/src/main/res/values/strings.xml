@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Dice Roll</string>
+    <string name="intro">Select size of die:</string>
+    <string name="roll">Roll</string>
 </resources>
