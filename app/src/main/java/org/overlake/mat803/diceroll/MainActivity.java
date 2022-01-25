@@ -22,17 +22,22 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initPicker();
         findViewById(R.id.roll).setOnClickListener(v -> {
             roll();
         });
         mResult = findViewById(R.id.result);
+        if (savedInstanceState != null) {
+            mDieValue = savedInstanceState.getInt(DIE_VALUE);
+            mResult.setText(savedInstanceState.getCharSequence(ROLL_RESULT));
+        }
+        initPicker();
     }
 
     private void initPicker() {
         NumberPicker picker = findViewById(R.id.picker);
         picker.setMinValue(1);
         picker.setMaxValue(6);
+        picker.setValue(mDieValue);
         picker.setWrapSelectorWheel(false);
         picker.setOnValueChangedListener((picker1, oldVal, newVal) -> {
             mDieValue = newVal;
